@@ -20,19 +20,8 @@ const NAV = [
 export default function AppShell({ children }) {
   const [collapsed, setCollapsed] = useState(false);
   const [clock, setClock]         = useState("");
-  const { threats, status, feed } = useSentinel();
+  const { threats, status, feed, theme, toggleTheme } = useSentinel();
   const location = useLocation();
-
-  const [theme, setTheme] = useState(() => {
-    return localStorage.getItem("sentinel-theme") || "dark";
-  });
-
-  useEffect(() => {
-    document.documentElement.setAttribute("data-theme", theme);
-    localStorage.setItem("sentinel-theme", theme);
-  }, [theme]);
-
-  const toggleTheme = () => setTheme(t => t === "dark" ? "light" : "dark");
 
   useEffect(() => {
     const tick = () => setClock(new Date().toLocaleTimeString("en", { hour12: false }));

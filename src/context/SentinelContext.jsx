@@ -26,6 +26,17 @@ export function SentinelProvider({ children }) {
     instagram: true, facebook: false, twitch: false, reddit: false,
   });
 
+  const [theme, setTheme] = useState(() => {
+    return localStorage.getItem("sentinel-theme") || "dark";
+  });
+
+  useEffect(() => {
+    document.documentElement.setAttribute("data-theme", theme);
+    localStorage.setItem("sentinel-theme", theme);
+  }, [theme]);
+
+  const toggleTheme = useCallback(() => setTheme(t => t === "dark" ? "light" : "dark"), []);
+
   useEffect(() => {
     fetch("/api/health")
       .then(r => r.json())
@@ -184,6 +195,7 @@ export function SentinelProvider({ children }) {
       maxResults, setMaxResults,
       includePlatforms, togglePlatform,
       runScan, generateDmca, addFeed, addLog,
+      theme, toggleTheme,
     }}>
       {children}
     </Ctx.Provider>

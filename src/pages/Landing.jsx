@@ -2,8 +2,9 @@ import { useNavigate } from "react-router-dom";
 import { useEffect, useRef, useState } from "react";
 import {
   Shield, Zap, Globe, Scale, BarChart3, Eye,
-  ArrowRight, Play, CheckCircle, TrendingUp
+  ArrowRight, Play, CheckCircle, TrendingUp, Sun, Moon
 } from "lucide-react";
+import { useSentinel } from "../context/SentinelContext.jsx";
 import PlatformLogo from "../components/PlatformLogo.jsx";
 import "./Landing.css";
 
@@ -102,6 +103,7 @@ function AnimatedCounter({ target, suffix = "" }) {
 
 export default function Landing() {
   const navigate = useNavigate();
+  const { theme, toggleTheme } = useSentinel();
   const [scanDemo, setScanDemo] = useState(false);
   const [demoProgress, setDemoProgress] = useState(0);
   const [demoThreats, setDemoThreats] = useState(0);
@@ -136,6 +138,9 @@ export default function Landing() {
             <a href="#features">Features</a>
             <a href="#platforms">Platforms</a>
             <a href="#team">Team</a>
+            <button className="btn" onClick={toggleTheme} style={{ padding: "10px", borderRadius: "50%" }} title="Toggle Theme">
+              {theme === "dark" ? <Sun size={14} /> : <Moon size={14} />}
+            </button>
             <button className="btn btn-primary btn-lg" onClick={() => navigate("/login")}>
               Launch App <ArrowRight size={14} />
             </button>
