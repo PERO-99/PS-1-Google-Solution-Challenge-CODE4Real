@@ -353,7 +353,11 @@ Return ONLY a strictly valid JSON object with the following structure (no markdo
   }
 });
 
-app.listen(PORT, () => {
-  // eslint-disable-next-line no-console
-  console.log(`SENTINEL API running on http://127.0.0.1:${PORT}`);
-});
+if (process.env.NODE_ENV !== "production") {
+  app.listen(PORT, () => {
+    // eslint-disable-next-line no-console
+    console.log(`SENTINEL API running on http://127.0.0.1:${PORT}`);
+  });
+}
+
+export default app;
