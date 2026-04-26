@@ -4,7 +4,7 @@ import { useSentinel } from "../context/SentinelContext.jsx";
 import {
   LayoutDashboard, Crosshair, FileWarning, Scale,
   BarChart3, Settings, ChevronLeft, ChevronRight,
-  Shield, Activity, Zap, Bell
+  Shield, Activity, Zap, Bell, Sun, Moon
 } from "lucide-react";
 import "./AppShell.css";
 
@@ -22,6 +22,17 @@ export default function AppShell({ children }) {
   const [clock, setClock]         = useState("");
   const { threats, status, feed } = useSentinel();
   const location = useLocation();
+
+  const [theme, setTheme] = useState(() => {
+    return localStorage.getItem("sentinel-theme") || "dark";
+  });
+
+  useEffect(() => {
+    document.documentElement.setAttribute("data-theme", theme);
+    localStorage.setItem("sentinel-theme", theme);
+  }, [theme]);
+
+  const toggleTheme = () => setTheme(t => t === "dark" ? "light" : "dark");
 
   useEffect(() => {
     const tick = () => setClock(new Date().toLocaleTimeString("en", { hour12: false }));
@@ -134,6 +145,9 @@ export default function AppShell({ children }) {
                 {highCount} HIGH RISK
               </span>
             )}
+            <button className="btn" onClick={toggleTheme} style={{ fontSize: 10, padding: "6px 12px" }}>
+              {theme === "dark" ? <Sun size={14} /> : <Moon size={14} />}
+            </button>
             <a href="/" className="btn" style={{ fontSize: 10, padding: "6px 12px" }}>← HOME</a>
           </div>
         </header>
