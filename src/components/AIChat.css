@@ -7,8 +7,8 @@
   display: flex;
   align-items: center;
   gap: 9px;
-  background: rgba(10, 16, 32, 0.92);
-  border: 1px solid rgba(255,255,255,0.14);
+  background: var(--panel);
+  border: 1px solid var(--border);
   color: var(--txt);
   border-radius: 999px;
   padding: 11px 18px;
@@ -44,8 +44,8 @@
   height: 560px;
   display: flex;
   flex-direction: column;
-  border: 1px solid rgba(255,255,255,0.1);
-  background: rgba(8, 12, 24, 0.97);
+  border: 1px solid var(--border);
+  background: var(--panel);
   border-radius: 20px;
   overflow: hidden;
   backdrop-filter: blur(28px);
@@ -65,7 +65,7 @@
   align-items: center;
   justify-content: space-between;
   padding: 14px 16px;
-  border-bottom: 1px solid rgba(255,255,255,0.07);
+  border-bottom: 1px solid var(--border);
   background: linear-gradient(135deg, rgba(66,133,244,0.08), rgba(52,168,83,0.05));
   flex-shrink: 0;
 }
@@ -75,8 +75,8 @@
   width: 34px;
   height: 34px;
   border-radius: 50%;
-  background: rgba(255,255,255,0.05);
-  border: 1px solid rgba(255,255,255,0.12);
+  background: var(--panel-soft);
+  border: 1px solid var(--border);
   display: grid;
   place-items: center;
   flex-shrink: 0;
@@ -123,7 +123,7 @@
   width: 26px;
   height: 26px;
   border-radius: 7px;
-  border: 1px solid rgba(255,255,255,0.1);
+  border: 1px solid var(--border);
   background: transparent;
   color: var(--txt-dim);
   display: grid;
@@ -141,8 +141,8 @@
   display: flex;
   gap: 6px;
   padding: 8px 14px;
-  border-bottom: 1px solid rgba(255,255,255,0.06);
-  background: rgba(255,255,255,0.02);
+  border-bottom: 1px solid var(--border);
+  background: var(--panel-soft);
   flex-shrink: 0;
   overflow-x: auto;
 }
@@ -150,8 +150,8 @@
   display: flex;
   align-items: center;
   gap: 5px;
-  border: 1px solid rgba(255,255,255,0.1);
-  background: rgba(255,255,255,0.03);
+  border: 1px solid var(--border);
+  background: var(--panel-soft);
   border-radius: 999px;
   padding: 4px 10px;
   font-family: 'IBM Plex Mono', monospace;
@@ -189,8 +189,8 @@
   width: 24px;
   height: 24px;
   border-radius: 50%;
-  background: rgba(255,255,255,0.04);
-  border: 1px solid rgba(255,255,255,0.1);
+  background: var(--panel-soft);
+  border: 1px solid var(--border);
   display: grid;
   place-items: center;
   flex-shrink: 0;
@@ -203,8 +203,8 @@
   gap: 4px;
 }
 .chat-msg--ai .chat-msg-bubble {
-  background: rgba(255,255,255,0.04);
-  border: 1px solid rgba(255,255,255,0.09);
+  background: var(--panel-soft);
+  border: 1px solid var(--border);
   border-radius: 16px 16px 16px 4px;
   padding: 10px 13px;
 }
@@ -248,15 +248,15 @@
   display: flex;
   flex-wrap: wrap;
   gap: 6px;
-  border-top: 1px solid rgba(255,255,255,0.06);
+  border-top: 1px solid var(--border);
   flex-shrink: 0;
 }
 .chat-suggestion {
   display: flex;
   align-items: center;
   gap: 5px;
-  border: 1px solid rgba(255,255,255,0.1);
-  background: rgba(255,255,255,0.03);
+  border: 1px solid var(--border);
+  background: var(--panel-soft);
   color: var(--txt-soft);
   border-radius: 999px;
   padding: 5px 11px;
@@ -277,13 +277,13 @@
   display: flex;
   gap: 8px;
   padding: 10px 12px;
-  border-top: 1px solid rgba(255,255,255,0.07);
+  border-top: 1px solid var(--border);
   flex-shrink: 0;
 }
 .chat-input {
   flex: 1;
-  border: 1px solid rgba(255,255,255,0.1);
-  background: rgba(255,255,255,0.04);
+  border: 1px solid var(--border);
+  background: var(--panel-soft);
   color: var(--txt);
   border-radius: 12px;
   padding: 9px 13px;
@@ -324,8 +324,8 @@
   align-items: center;
   gap: 6px;
   padding: 7px 14px;
-  border-top: 1px solid rgba(255,255,255,0.05);
-  background: rgba(255,255,255,0.015);
+  border-top: 1px solid var(--border);
+  background: var(--panel-soft);
   font-family: 'IBM Plex Mono', monospace;
   font-size: 9px;
   color: var(--txt-mute);
