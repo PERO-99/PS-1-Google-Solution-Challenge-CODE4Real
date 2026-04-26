@@ -1,0 +1,189 @@
+.hunter { display: flex; flex-direction: column; gap: 20px; }
+
+.hunter-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+
+.form-group { margin-bottom: 16px; }
+.form-label {
+  display: block;
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 10px;
+  color: var(--txt-soft);
+  letter-spacing: 1.3px;
+  margin-bottom: 7px;
+  font-weight: 500;
+}
+
+.platform-toggles {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.platform-toggle {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  border: 1px solid var(--border);
+  background: transparent;
+  color: var(--txt-soft);
+  border-radius: 999px;
+  padding: 6px 12px;
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 10px;
+  cursor: pointer;
+  transition: all 0.2s;
+  font-weight: 500;
+}
+.platform-toggle:hover { border-color: var(--border-bright); color: var(--txt); }
+.platform-toggle.on { font-weight: 600; }
+
+.dropzone {
+  border: 1px dashed rgba(72,195,255,0.3);
+  border-radius: var(--radius);
+  padding: 24px;
+  text-align: center;
+  background: rgba(72,195,255,0.04);
+  cursor: pointer;
+  transition: all 0.2s;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.dropzone:hover {
+  border-color: rgba(72,195,255,0.6);
+  background: rgba(72,195,255,0.08);
+}
+.dropzone--loaded {
+  border-color: rgba(31,230,168,0.4);
+  background: rgba(31,230,168,0.05);
+}
+.dropzone-title {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--txt-soft);
+  margin-bottom: 4px;
+}
+.dropzone-filename {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 12px;
+  color: #00ffb3;
+  margin-bottom: 4px;
+}
+.dropzone-sub {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 10px;
+  color: var(--txt-soft);
+}
+
+.scan-progress { margin-bottom: 14px; }
+.scan-progress-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 10px;
+  color: var(--cyan);
+  margin-bottom: 6px;
+}
+.scan-spinner {
+  width: 12px;
+  height: 12px;
+  border: 2px solid rgba(72,195,255,0.2);
+  border-top-color: var(--cyan);
+  border-radius: 50%;
+  display: inline-block;
+  animation: spin 0.8s linear infinite;
+}
+.scan-error {
+  background: rgba(255,107,138,0.12);
+  border: 1px solid rgba(255,107,138,0.4);
+  border-radius: var(--radius-sm);
+  padding: 10px 12px;
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 12px;
+  color: #ff6b8a;
+  margin-bottom: 12px;
+  font-weight: 600;
+}
+
+.hunter-actions {
+  display: flex;
+  gap: 10px;
+  margin-top: 4px;
+}
+
+/* Telemetry */
+.telemetry-log {
+  background: rgba(0,0,0,0.3);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  padding: 12px;
+  height: 280px;
+  overflow-y: auto;
+  font-family: 'IBM Plex Mono', monospace;
+}
+.telemetry-empty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  color: var(--txt-soft);
+  font-size: 13px;
+}
+.telemetry-line {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  margin-bottom: 6px;
+  font-size: 12px;
+  animation: fadeIn 0.2s ease both;
+}
+.telemetry-time { color: var(--txt-dim); flex-shrink: 0; }
+.telemetry-icon { flex-shrink: 0; font-size: 13px; }
+.telemetry-msg  { line-height: 1.4; font-weight: 500; }
+
+.platform-status-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 6px;
+}
+.platform-status-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 10px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 11px;
+  color: var(--txt-soft);
+  font-weight: 500;
+  transition: all 0.2s;
+}
+.platform-status-item.disabled { opacity: 0.35; }
+.platform-status-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  margin-left: auto;
+  flex-shrink: 0;
+}
+
+.fingerprint-grid {
+  display: grid;
+  grid-template-columns: repeat(32, 1fr);
+  gap: 2px;
+}
+.fingerprint-bit {
+  aspect-ratio: 1;
+  border-radius: 1px;
+  transition: background 0.2s;
+}
+
+@media (max-width: 900px) {
+  .hunter-grid { grid-template-columns: 1fr; }
+}
