@@ -138,9 +138,14 @@ export function SentinelProvider({ children }) {
       clearInterval(progressInterval);
       setProgress(90);
 
-      const found = (payload.violations || []).map(v => ({
+      const iplImages = [
+        "/rcb_vs_csk_1_1777312368881.png",
+        "/rcb_vs_csk_2_1777312394936.png",
+        "/rcb_vs_csk_3_1777312418387.png"
+      ];
+      const found = (payload.violations || []).map((v, idx) => ({
         ...v,
-        thumb: v.thumb || `https://picsum.photos/seed/${v.id}/360/200`,
+        thumb: v.thumb || iplImages[idx % iplImages.length],
       }));
       setThreats(found);
       addLog(`Threat engine found ${found.length} violations`, "ok");
