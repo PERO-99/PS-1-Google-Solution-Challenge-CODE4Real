@@ -141,12 +141,24 @@ export function SentinelProvider({ children }) {
       const iplImages = [
         "/rcb_vs_csk_1_1777312368881.png",
         "/rcb_vs_csk_2_1777312394936.png",
-        "/rcb_vs_csk_3_1777312418387.png"
+        "/rcb_vs_csk_3_1777312418387.png",
+        "/rcb_vs_csk_4_1777313373478.png",
+        "/rcb_vs_csk_5_1777313392024.png",
+        "/rcb_vs_csk_6_1777313406507.png",
+        "/rcb_vs_csk_7_1777313425805.png",
+        "/rcb_vs_csk_8_1777313443972.png",
+        "/rcb_vs_csk_9_1777313463833.png"
       ];
-      const found = (payload.violations || []).map((v, idx) => ({
-        ...v,
-        thumb: v.thumb || iplImages[idx % iplImages.length],
-      }));
+      const found = (payload.violations || []).map((v, idx) => {
+        let finalThumb = v.thumb;
+        if (!finalThumb || finalThumb.includes('picsum.photos')) {
+          finalThumb = iplImages[idx % iplImages.length];
+        }
+        return {
+          ...v,
+          thumb: finalThumb,
+        };
+      });
       setThreats(found);
       addLog(`Threat engine found ${found.length} violations`, "ok");
 

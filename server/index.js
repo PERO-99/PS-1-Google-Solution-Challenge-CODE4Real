@@ -143,19 +143,35 @@ async function serpSearch({ query, platform, maxResults }) {
 }
 
 function makeMockPlatformData({ query, platform, maxResults }) {
-  const nouns = ["Final", "Highlights", "Replay", "Live", "Broadcast", "Clip", "Goal", "Stream"];
-  const channels = ["LeakZone", "MirrorSports", "FastReplay", "SportsBuzz", "UnofficialTV", "MatchHub"];
+  const nouns = [
+    "Final", "Highlights", "Replay", "Live", "Broadcast", "Clip", "Goal", "Stream", 
+    "Full Match", "Super Over", "T20 Highlights", "Best Moments", "Wickets", 
+    "Batting Show", "Live Score", "Pirated Stream", "Action", "Uncut"
+  ];
+  const channels = [
+    "LeakZone", "MirrorSports", "FastReplay", "SportsBuzz", "UnofficialTV", 
+    "MatchHub", "CricketMania", "LiveCric", "Sports365", "StreamPirates", 
+    "DailySports", "FreeHit", "StumpMic", "BoundaryTracker", "IPLStreams"
+  ];
+  const prefixes = ["", "HD ", "4K ", "1080p ", "Watch ", "Free "];
 
-  return Array.from({ length: maxResults }, (_, i) => ({
-    id: `${platform.toLowerCase()}_mock_${i}`,
-    platform,
-    title: `${query} ${nouns[i % nouns.length]} ${i % 3 === 0 ? "FREE" : ""}`.trim(),
-    channel: channels[i % channels.length],
-    description: "Reposted sports content. No ownership attribution.",
-    date: `2026-04-${String(10 + i).padStart(2, "0")}`,
-    url: `https://example.com/${platform.toLowerCase()}/${i}`,
-    thumb: `https://picsum.photos/seed/${platform}_${i}/320/180`,
-  }));
+  return Array.from({ length: maxResults }, (_, i) => {
+    const noun = nouns[(i + platform.length) % nouns.length];
+    const channel = channels[(i * 3 + platform.length) % channels.length];
+    const prefix = prefixes[(i * 2) % prefixes.length];
+    const isFree = i % 3 === 0 ? "FREE" : "";
+    
+    return {
+      id: `${platform.toLowerCase()}_mock_${i}`,
+      platform,
+      title: `${prefix}${query} ${noun} ${isFree}`.trim(),
+      channel: channel,
+      description: "Reposted sports content. No ownership attribution.",
+      date: `2026-04-${String(10 + i).padStart(2, "0")}`,
+      url: `https://example.com/${platform.toLowerCase()}/${i}`,
+      thumb: `https://picsum.photos/seed/${platform}_${i}/320/180`,
+    };
+  });
 }
 
 function createDmcaTemplate({ organizationName, contentName, violation }) {
