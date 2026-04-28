@@ -2,11 +2,15 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Shield, Lock, User, ArrowRight, Zap, Fingerprint } from "lucide-react";
 import "./Login.css";
+import DemoCredentialsPopup from "../components/DemoCredentialsPopup";
 
 export default function Login() {
   const navigate = useNavigate();
   const [loading, setLoading] = useState(false);
   const [credentials, setCredentials] = useState({ id: "", key: "" });
+
+  const setEmail = (email) => setCredentials(prev => ({...prev, id: email}));
+  const setPassword = (password) => setCredentials(prev => ({...prev, key: password}));
 
   const handleLogin = (e) => {
     e.preventDefault();
@@ -86,6 +90,7 @@ export default function Login() {
           <a href="#" className="forgot-link">Request Access?</a>
         </div>
       </div>
+      <DemoCredentialsPopup setEmail={setEmail} setPassword={setPassword} />
     </div>
   );
 }
